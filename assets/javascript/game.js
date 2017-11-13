@@ -2,13 +2,14 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
 var guess = 0;
+var guesses = "";
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
 
 var letter = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
 
 document.onkeyup = function (event) {
     var userGuess = event.key;
-    alert("User guess: " + userGuess);
+    alert("User guess: " + userGuess +". Was not right");
     if (userGuess === letter) {
         wins++;
         guessesLeft = 10;
@@ -17,7 +18,7 @@ document.onkeyup = function (event) {
     } else {
         if (guessesLeft > 0) {
             guessesLeft--;
-            guesses++;
+            guesses += " "+userGuess;
             displayGame();
         } else {
             losses++;
